@@ -1,0 +1,27 @@
+{
+  "name": "anime-aria2",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "author": {
+    "name": "niyoh"
+  },
+  "description": "使用aria2下载动画的用户脚本",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/jsoneditor": "^9.9.5",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-plugin-monkey": "^3.5.1",
+    "vite-plugin-node-polyfills": "^0.21.0"
+  },
+  "dependencies": {
+    "jsoneditor": "^10.0.3",
+    "node-aria2": "^1.1.0"
+  }
+}
