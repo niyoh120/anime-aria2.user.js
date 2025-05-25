@@ -154,11 +154,12 @@ async function addDownloadTask(collectTitle: string, downloadInfoList: any) {
   if (url.port != "") {
     port = parseInt(url.port);
   }
+
   const aria2 = new Aria2RPC(
     {
       host: url.hostname,
       port: port,
-      secure: url.protocol == 'wss:',
+      secure: secure,
       secret: config['aria2-rpc-secret'],
       path: url.pathname
     },
