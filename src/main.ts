@@ -127,14 +127,16 @@ async function getDownloadInfo(downloadPageURL: string) {
     const title = titleTag.textContent;
     const urlSelector = 'table.download-table a';
     const urlTag: any = doc.querySelector(urlSelector);
-    if (!urlTag) {
-      throw new Error(`no url for download page ${downloadPageURL}`);
+    if (urlTag) {
+      const url = urlTag.getAttribute("data-url");
+      if (url) {
+        return {
+          title: title,
+          url: url
+        };
+      }
     }
-    const url = urlTag.href;
-    return {
-      title: title,
-      url: url
-    };
+    throw new Error(`no url for download page ${downloadPageURL}`);
   } catch (error) {
     throw error;
   } finally {
@@ -202,6 +204,7 @@ async function downloadOne() {
   const collectTitle = getCollectTitle();
   console.log(collectTitle);
   const urlList = [getDownloadPageURL(window.location.href)];
+  console.log(urlList);
   const downloadInfoList = await Promise.all(
     urlList.map(url => {
       return getDownloadInfo(url);
